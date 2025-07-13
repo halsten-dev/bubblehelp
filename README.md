@@ -1,6 +1,10 @@
 # bubblehelp
 A manager to render, contextualize and manage BubbleTea (https://github.com/charmbracelet/bubbletea) keybinds globally
 
+```go
+import "github.com/halsten-dev/bubblehelp"
+```
+
 # Introduction
 When working on a complex application in the terminal, it's important to have a good
 way of managing multiple contexts with different keybinds, same keys but different outcome,
