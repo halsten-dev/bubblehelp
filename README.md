@@ -1,5 +1,5 @@
 # bubblehelp
-A manager to render, contextualize and manage BubbleTea keybinds globally
+A manager to render, contextualize and manage BubbleTea (https://github.com/charmbracelet/bubbletea) keybinds globally
 
 # Introduction
 When working on a complex application in the terminal, it's important to have a good
