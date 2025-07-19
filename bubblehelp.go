@@ -18,6 +18,9 @@ var (
 
 	// ShowAll is the flag to define whether it's the full or short help that will be rendered.
 	ShowAll bool
+
+	// previousContext allows to reset the previous context.
+	previousContext KeymapContext
 )
 
 // Init is the first function that needs to be called in the start of the app.
@@ -55,8 +58,13 @@ func SwitchContext(context KeymapContext) {
 		keymap.Reset()
 	}
 
+	previousContext = CurrentContext
 	CurrentContext = context
 	ShowAll = false
+}
+
+func SwitchToPreviousContext() {
+	SwitchContext(previousContext)
 }
 
 // UpdateKeybindHelpDesc allows to temporary change the help description for a keybind in the current Keymap context.
