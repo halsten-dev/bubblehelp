@@ -55,28 +55,7 @@ func NewKeymap(showAllColCount int) *Keymap {
 	return &Keymap{
 		Bindings:           make([]Key, 0),
 		ShowAllColumnCount: showAllColCount,
-		Style: Style{
-			EssentialKey: lipgloss.NewStyle().
-				Bold(true),
-			EssentialKeyDescription: lipgloss.NewStyle().
-				Italic(true),
-			EssentialKeySeparator: lipgloss.NewStyle().
-				Italic(true),
-			EssentialKeySeparatorValue: " - ",
-			EssentialColSeparator: lipgloss.NewStyle().
-				Bold(true),
-			EssentialColSeparatorValue: " • ",
-			FullKey: lipgloss.NewStyle().
-				Bold(true),
-			FullKeyDescription: lipgloss.NewStyle().
-				Italic(true),
-			FullKeySeparator: lipgloss.NewStyle().
-				Italic(true),
-			FullKeySeparatorValue: " - ",
-			FullColSeparator: lipgloss.NewStyle().
-				Italic(true),
-			FullColSeparatorValue: "   ",
-		},
+		Style:              defaultStyle,
 	}
 }
 

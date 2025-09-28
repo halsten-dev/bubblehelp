@@ -2,11 +2,12 @@
 package bubblehelp
 
 import (
-	"github.com/charmbracelet/bubbles/key"
-	"github.com/charmbracelet/lipgloss"
 	"log"
 	"math"
 	"strings"
+
+	"github.com/charmbracelet/bubbles/key"
+	"github.com/charmbracelet/lipgloss"
 )
 
 var (
@@ -21,11 +22,36 @@ var (
 
 	// previousContext allows to reset the previous context.
 	previousContext KeymapContext
+
+	// defaultStyle is used by defautl by all keymaps.
+	defaultStyle Style
 )
 
 // Init is the first function that needs to be called in the start of the app.
 func Init() {
 	Contexts = make(map[KeymapContext]*Keymap)
+	defaultStyle = Style{
+		EssentialKey: lipgloss.NewStyle().
+			Bold(true),
+		EssentialKeyDescription: lipgloss.NewStyle().
+			Italic(true),
+		EssentialKeySeparator: lipgloss.NewStyle().
+			Italic(true),
+		EssentialKeySeparatorValue: " - ",
+		EssentialColSeparator: lipgloss.NewStyle().
+			Bold(true),
+		EssentialColSeparatorValue: " • ",
+		FullKey: lipgloss.NewStyle().
+			Bold(true),
+		FullKeyDescription: lipgloss.NewStyle().
+			Italic(true),
+		FullKeySeparator: lipgloss.NewStyle().
+			Italic(true),
+		FullKeySeparatorValue: " - ",
+		FullColSeparator: lipgloss.NewStyle().
+			Italic(true),
+		FullColSeparatorValue: "   ",
+	}
 }
 
 // RegisterContext allows to register a new Keymap context and link it with the given identifier.
@@ -194,4 +220,8 @@ func ViewEssential(keymap *Keymap, width int) string {
 	return lipgloss.NewStyle().
 		AlignHorizontal(lipgloss.Center).
 		Width(width).Render(b.String())
+}
+
+func SetDefaultStyle(style Style) {
+	defaultStyle = style
 }
